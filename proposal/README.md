@@ -18,14 +18,14 @@ High Level Descriptions: This program would follow a MVC pattern.
     This class will initializes all GUI (buttons), keeps track and sets all actions performed
 
     Canvas: A canvas class which extends from JComponent (View)
-    This class will be in charge of initializing the canvas board that a user can draw on, shows all GUI involving with what the user sees at the surface     (pencil, eraser, colors, shapes, etc), and keep track of all mouselistener components
+    This class will be in charge of initializing the canvas board that a user can draw on, shows all GUI involving with what the user sees at the surface (pencil, eraser, colors, shapes, etc), and keep track of all mouselistener components
 
     Controller: A controller class
     This class keeps track of all GUI involving with what the user sees at the surface (pencil, eraser, colors, shapes, etc)
 
     Driver: A driver class to run the program
 
-    Intended Functionality: A drawing app can have many uses, from doodling, taking notes, drawing charts, brainstorming, etc. The users are those who       want to use a straightforward drawing app to visualize their ideas, no matter which PC or laptop they own.
+    Intended Functionality: A drawing app can have many uses, from doodling, taking notes, drawing charts, brainstorming, etc. The users are those who want to use a straightforward drawing app to visualize their ideas, no matter which PC or laptop they own.
 
 Operations:
 
