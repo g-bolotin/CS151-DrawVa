@@ -12,7 +12,7 @@ public class DrawVaView extends JFrame implements Observer {
     private BufferedImage strokeColorImage =
             new BufferedImage(16, 16, java.awt.image.BufferedImage.TYPE_INT_RGB);
 
-    // Menubar
+    // Menu
     private JMenuItem restore;
     private JRadioButtonMenuItem selectionMode;
     private JRadioButtonMenuItem drawingMode;
@@ -22,7 +22,7 @@ public class DrawVaView extends JFrame implements Observer {
     private JMenuItem fillColor;
     private JMenuItem strokeColor;
 
-    // Toolbar
+    // Tool
     private JButton selectButton;
     private JButton drawButton;
     private JComboBox strokes;
@@ -52,10 +52,6 @@ public class DrawVaView extends JFrame implements Observer {
      * Update with data from the model.
      */
     public void update(Object observable) {
-        // XXX Fill this in with the logic for updating the view when the model
-        // changes.
-
-        // Update draw modes
         selectButton.setSelected(!model.getDrawMode());
         selectionMode.setSelected(!model.getDrawMode());
         drawButton.setSelected(model.getDrawMode());
@@ -111,14 +107,12 @@ public class DrawVaView extends JFrame implements Observer {
     private JMenu createFileMenu() {
         JMenu file = new JMenu("File");
         JMenuItem new1 = new JMenuItem("New");
-        new1.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_N, ActionEvent.CTRL_MASK));
         new1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.resetCanvasShapes();
             }
         });
         JMenuItem save = new JMenuItem("Save");
-        save.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_S, ActionEvent.CTRL_MASK));
         save.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.outputToFile();
@@ -128,7 +122,6 @@ public class DrawVaView extends JFrame implements Observer {
         });
 
         restore = new JMenuItem("Restore");
-        restore.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_R, ActionEvent.CTRL_MASK));
         restore.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 model.readFromFile();
@@ -141,7 +134,6 @@ public class DrawVaView extends JFrame implements Observer {
 
 
         JMenuItem exit = new JMenuItem("Exit");
-        exit.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_Q, ActionEvent.CTRL_MASK));
         exit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -158,15 +150,12 @@ public class DrawVaView extends JFrame implements Observer {
         JMenu edit = new JMenu("Edit");
         ButtonGroup radiogroup = new ButtonGroup();
         selectionMode = new JRadioButtonMenuItem("Selection Mode");
-        selectionMode.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_Z, ActionEvent.CTRL_MASK));
         radiogroup.add(selectionMode);
 
         drawingMode = new JRadioButtonMenuItem("Drawing Mode", true);
-        drawingMode.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_D, ActionEvent.CTRL_MASK));
         radiogroup.add(drawingMode);
 
         deleteShape = new JMenuItem("Delete Shape");
-        deleteShape.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_DELETE, 0));
         deleteShape.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 for (DrawVaModel.CanvasShape cs : model.getCanvasShapes()) {
@@ -181,10 +170,9 @@ public class DrawVaView extends JFrame implements Observer {
         });
 
         transformShape = new JMenuItem("Transform Shape");
-        transformShape.setAccelerator(KeyStroke.getKeyStroke( KeyEvent.VK_T, ActionEvent.CTRL_MASK));
         transformShape.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                addTransformShapeModal();
+                addTransformShapeModel();
             }
         });
 
@@ -331,7 +319,7 @@ public class DrawVaView extends JFrame implements Observer {
     }
 
     private JComboBox addDrawingModesDropdown() {
-        String[] drawingModeValues = { "Freeform line" };
+        String[] drawingModeValues = { "Freeform line", "Line", "Rectangle", "Ellipse" };
         JComboBox drawingModes = new JComboBox(drawingModeValues);
         drawingModes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e){
@@ -339,6 +327,15 @@ public class DrawVaView extends JFrame implements Observer {
                 switch (selectedDrawingMode) {
                     case "Freeform line":
                         model.setDrawingMode(DrawVaModel.drawingModeType.FREEFORM);
+                        break;
+                    case "Line":
+                        model.setDrawingMode(DrawVaModel.drawingModeType.LINE);
+                        break;
+                    case "Rectangle":
+                        model.setDrawingMode(DrawVaModel.drawingModeType.RECTANGLE);
+                        break;
+                    case "Ellipse":
+                        model.setDrawingMode(DrawVaModel.drawingModeType.ELLIPSE);
                         break;
                 }
             }
@@ -359,9 +356,6 @@ public class DrawVaView extends JFrame implements Observer {
                 else {
                     dropdownNumerical = Character.getNumericValue(dropdownVal.charAt(0));
                 }
-                // We only want to update the values if the model and dropdown values are not the same
-                // This is an issue with JComboBox, essentially the Listener fires actions way too often
-                //   so we must filter the actions
                 if ( model.getStrokeThickness() != dropdownNumerical) {
                     updateStrokeThickness(dropdownVal);
                     for (DrawVaModel.CanvasShape cs : model.getCanvasShapes()) {
@@ -439,7 +433,7 @@ public class DrawVaView extends JFrame implements Observer {
         }
     }
 
-    private void addTransformShapeModal() {
+    private void addTransformShapeModel() {
     	DrawVaModel.CanvasShape selectedShape = null;
         for (DrawVaModel.CanvasShape cs : model.getCanvasShapes()) {
             if (cs.selected) {
