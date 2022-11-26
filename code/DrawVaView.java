@@ -28,6 +28,8 @@ public class DrawVaView extends JFrame implements Observer {
     private JComboBox strokes;
     private JButton fillColorButton;
     private JButton strokeColorButton;
+    
+    private DrawVaController canvasController;
 
     /**
      * Create a new View.
@@ -42,10 +44,11 @@ public class DrawVaView extends JFrame implements Observer {
         // Hook up this observer so that it will be notified when the model
         // changes.
         this.model = model;
+        canvasController = new DrawVaController(model);
         model.addObserver(this);
         createMenuBar();
         createToolBar();
-        add(new DrawVaController(model), BorderLayout.CENTER);
+        add(canvasController, BorderLayout.CENTER);
         setVisible(true);
     }
     /**
@@ -120,6 +123,54 @@ public class DrawVaView extends JFrame implements Observer {
                 restore.setEnabled(true);
             }
         });
+        
+        JMenuItem download = new JMenuItem("Download");
+        download.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fc = new JFileChooser(System.getProperty("user.home") + "/Downloads");
+                fc.setDialogType(JFileChooser.SAVE_DIALOG);
+                fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+                
+                fc.setAcceptAllFileFilterUsed(false);
+                FileFilter pngFilter = new FileNameExtensionFilter("PNG File", "png", "PNG");
+                fc.addChoosableFileFilter(pngFilter);
+                FileFilter jpgFilter = new FileNameExtensionFilter("JPEG File", "jpg", "JPG", "jpeg", "JPEG");
+                fc.addChoosableFileFilter(jpgFilter);
+                FileFilter gifFilter = new FileNameExtensionFilter("GIF File", "gif", "GIF");
+                fc.addChoosableFileFilter(gifFilter);
+
+
+                JTextArea text = new JTextArea("Do not add a file extension to the file name! \n\nIt will be added automatically based on your selection in File Format.");
+                text.setLineWrap(true);
+                text.setWrapStyleWord(true);
+                text.setEditable(false);
+                text.setMargin(new Insets(10,10,10,10));
+                fc.setAccessory(text);
+
+                int returnValFC = fc.showSaveDialog(download);
+                if (returnValFC == JFileChooser.APPROVE_OPTION) {
+                    try {
+                        BufferedImage currentCanvas = canvasController.createBufferedImageFromCanvas();
+
+                        if (fc.getFileFilter().equals(jpgFilter))
+                            ImageIO.write(currentCanvas, "jpg", new File(fc.getSelectedFile().getAbsolutePath() + ".jpg"));
+                        else if (fc.getFileFilter().equals(gifFilter))
+                            ImageIO.write(currentCanvas, "gif", new File(fc.getSelectedFile().getAbsolutePath() + ".gif"));
+                        else
+                            ImageIO.write(currentCanvas, "png", new File(fc.getSelectedFile().getAbsolutePath() + ".png"));
+
+                        model.outputToFile();
+                        restore.setEnabled(true);
+                        System.out.println("File successfully saved to: " + fc.getSelectedFile().getAbsolutePath());
+                    } catch (IOException ioe) {
+                        ioe.printStackTrace();
+                    }
+                }
+                else {
+                    System.out.println("Save cancelled.");
+                }
+            }
+        });
 
         restore = new JMenuItem("Restore");
         restore.addActionListener(new ActionListener() {
@@ -141,6 +192,7 @@ public class DrawVaView extends JFrame implements Observer {
         });
         file.add(new1);
         file.add(save);
+        file.add(download);
         file.add(restore);
         file.add(exit);
         return file;
