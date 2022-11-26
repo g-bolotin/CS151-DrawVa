@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.geom.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 
 public class DrawVaController extends JComponent implements Observer {
 
