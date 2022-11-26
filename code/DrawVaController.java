@@ -123,6 +123,14 @@ public class DrawVaController extends JComponent implements Observer {
 
         drawPreviewLine(g2);
     }
+    
+    public BufferedImage createBufferedImageFromCanvas(){
+        BufferedImage bImg = new BufferedImage(this.getWidth(), this.getHeight(), BufferedImage.TYPE_INT_RGB);
+        Graphics2D cg = bImg.createGraphics();
+        this.paintAll(cg);
+        cg.dispose();
+        return bImg;
+    }
 
     private void drawShape(DrawVaModel.CanvasShape cs, Graphics2D g2) {
         if (cs.shape != null) {
