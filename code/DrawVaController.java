@@ -124,7 +124,7 @@ public class DrawVaController extends JComponent implements Observer {
                 g2.setTransform(newAffine);
                 g2.setPaint(cs.fillColor);
                 g2.fill(cs.shape);
-                g2.setStroke(new BasicStroke(cs.strokeWidth));
+                g2.setStroke(new BasicStroke(cs.strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                 g2.setPaint(cs.strokeColor);
                 g2.draw(cs.shape);
                 drawSelectRectangle(cs, g2);
@@ -133,7 +133,7 @@ public class DrawVaController extends JComponent implements Observer {
                 g2.draw(cs.shape);
                 g2.setPaint(cs.fillColor);
                 g2.fill(cs.shape);
-                g2.setStroke(new BasicStroke(cs.strokeWidth));
+                g2.setStroke(new BasicStroke(cs.strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                 g2.setPaint(cs.strokeColor);
                 g2.draw(cs.shape);
                 drawSelectRectangle(cs, g2);
@@ -144,13 +144,13 @@ public class DrawVaController extends JComponent implements Observer {
                 AffineTransform newAffine = generateAffine(cs, oldAffine);
                 g2.setTransform(newAffine);
                 cs.AT = generateAffine(cs, null);
-                g2.setStroke(new BasicStroke(cs.strokeWidth));
+                g2.setStroke(new BasicStroke(cs.strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                 g2.setPaint(cs.strokeColor);
                 drawFreeHandLine(cs.freeHandPoints, g2);
                 drawSelectRectangle(cs, g2);
                 g2.setTransform(oldAffine);
             } else {
-                g2.setStroke(new BasicStroke(cs.strokeWidth));
+                g2.setStroke(new BasicStroke(cs.strokeWidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
                 g2.setPaint(cs.strokeColor);
                 drawFreeHandLine(cs.freeHandPoints, g2);
                 drawSelectRectangle(cs, g2);
