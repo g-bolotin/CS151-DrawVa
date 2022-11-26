@@ -35,7 +35,6 @@ public class DrawVaController extends JComponent implements Observer {
                     }
                     repaint();
                 } else {
-                    // perform hit test
                     ArrayList<DrawVaModel.CanvasShape> shapesArray = model.getCanvasShapes();
                     ListIterator<DrawVaModel.CanvasShape> it = shapesArray.listIterator(shapesArray.size());
                     model.setDeleteTransformOverride(true);
@@ -56,6 +55,15 @@ public class DrawVaController extends JComponent implements Observer {
                     Point clickBegin = model.getClickBegin();
                     Point clickEnd = model.getClickEnd();
                     switch (model.getDrawingMode()) {
+                        case ELLIPSE:
+                            shape = drawEllipse(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y);
+                            break;
+                        case RECTANGLE:
+                            shape = drawRectangle(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y);
+                            break;
+                        case LINE:
+                            shape = drawLine(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y);
+                            break;
                         case FREEFORM:
                             model.getCanvasShapes().get(model.getCanvasShapesSize()).freeHandPoints.add(clickEnd);
                             break;
@@ -113,6 +121,7 @@ public class DrawVaController extends JComponent implements Observer {
             drawShape(cs, g2);
         }
 
+        drawPreviewLine(g2);
     }
 
     private void drawShape(DrawVaModel.CanvasShape cs, Graphics2D g2) {
@@ -183,7 +192,27 @@ public class DrawVaController extends JComponent implements Observer {
         }
     }
 
-   
+    private void drawPreviewLine(Graphics2D g2) {
+        if (model.getClickBegin() != null && model.getClickEnd() != null && model.getDrawMode()) {
+            g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
+            g2.setPaint(Color.GRAY);
+            float[] dashPattern = {3.0f, 3.0f};
+            g2.setStroke(new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashPattern, 3.0f));
+            Point clickBegin = model.getClickBegin();
+            Point clickEnd = model.getClickEnd();
+            switch (model.getDrawingMode()) {
+                case ELLIPSE:
+                    g2.draw(drawEllipse(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y));
+                    break;
+                case RECTANGLE:
+                    g2.draw(drawRectangle(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y));
+                    break;
+                case LINE:
+                    g2.draw(drawLine(clickBegin.x, clickBegin.y, clickEnd.x, clickEnd.y));
+                    break;
+            }
+        }
+    }
 
     private Rectangle2D.Float drawRectangle(int x1, int y1, int x2, int y2) {
         return new Rectangle2D.Float(Math.min(x1, x2), Math.min(y1, y2), Math.abs(x1 - x2), Math.abs(y1 - y2));
@@ -288,6 +317,26 @@ public class DrawVaController extends JComponent implements Observer {
         int x2 = 0;
         int y1 = 0;
         int y2 = 0;
+        if (s instanceof Rectangle2D) {
+            x1 = (int) ((Rectangle2D) s).getX();
+            y1 = (int) ((Rectangle2D) s).getY();
+            int width = (int) ((Rectangle2D) s).getWidth();
+            int height = (int) ((Rectangle2D) s).getHeight();
+            x2 = x1 + width;
+            y2 = y1 + height;
+        } else if (s instanceof Ellipse2D) {
+            x1 = (int) ((Ellipse2D) s).getX();
+            y1 = (int) ((Ellipse2D) s).getY();
+            int width = (int) ((Ellipse2D) s).getWidth();
+            int height = (int) ((Ellipse2D) s).getHeight();
+            x2 = x1 + width;
+            y2 = y1 + height;
+        } else if (s instanceof Line2D) {
+            x1 = (int) ((Line2D) s).getX1();
+            y1 = (int) ((Line2D) s).getY1();
+            x2 = (int) ((Line2D) s).getX2();
+            y2 = (int) ((Line2D) s).getY2();
+        }
         return new Point[]{new Point(x1, y1), new Point(x2, y2)};
     }
 
@@ -303,4 +352,4 @@ public class DrawVaController extends JComponent implements Observer {
     }
 
 
-}
+}     
