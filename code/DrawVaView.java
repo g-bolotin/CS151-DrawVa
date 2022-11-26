@@ -1,7 +1,12 @@
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 
 
 public class DrawVaView extends JFrame implements Observer {
