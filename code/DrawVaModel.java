@@ -134,6 +134,11 @@ public class DrawVaModel {
 	public int getCanvasShapesSize() {
 		return canvasShapesSize;
 	}
+	
+	public void setCanvasShapesSize(int size) {
+		canvasShapesSize = size;
+	}
+
 
 	public Point getClickBegin() {
 		return clickBegin;
