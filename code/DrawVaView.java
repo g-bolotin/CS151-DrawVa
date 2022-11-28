@@ -360,6 +360,12 @@ public class DrawVaView extends JFrame implements Observer {
                 }
             }
         });
+        
+        undoButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                canvasController.undo();
+            }
+        });
 
         JComboBox drawingModes = addDrawingModesDropdown();
         strokes = addStrokesDropdown();
@@ -369,6 +375,7 @@ public class DrawVaView extends JFrame implements Observer {
         toolbar.add(selectButton);
         toolbar.add(drawButton);
         toolbar.add(drawingModes);
+        toolbar.add(undoButton);
         toolbar.add(strokes);
         toolbar.add(fillColor);
         toolbar.add(strokeColor);
