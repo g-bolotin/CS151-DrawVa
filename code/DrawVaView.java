@@ -30,6 +30,7 @@ public class DrawVaView extends JFrame implements Observer {
     // Tool
     private JButton selectButton;
     private JButton drawButton;
+    private JButton undoButton;
     private JComboBox strokes;
     private JButton fillColorButton;
     private JButton strokeColorButton;
@@ -341,6 +342,7 @@ public class DrawVaView extends JFrame implements Observer {
         ImageIcon paintBrush = new ImageIcon("src/icons/paintbrush.png");
         selectButton = new JButton("Select", cursor);
         drawButton = new JButton("Draw", paintBrush);
+        undoButton = new JButton("Undo");
         drawButton.setSelected(true);
 
         selectButton.addActionListener(new ActionListener(){
