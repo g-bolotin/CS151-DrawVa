@@ -132,6 +132,14 @@ public class DrawVaController extends JComponent implements Observer {
         cg.dispose();
         return bImg;
     }
+    
+    public void undo(){
+        if (!model.getCanvasShapes().isEmpty()){
+            model.getCanvasShapes().remove(model.getCanvasShapes().size()-1);
+            model.setCanvasShapesSize(model.getCanvasShapesSize()-1);
+            repaint();
+        }
+    }
 
     private void drawShape(DrawVaModel.CanvasShape cs, Graphics2D g2) {
         if (cs.shape != null) {
