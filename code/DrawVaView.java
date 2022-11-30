@@ -23,6 +23,7 @@ public class DrawVaView extends JFrame implements Observer {
     private JRadioButtonMenuItem drawingMode;
     private JMenuItem deleteShape;
     private JMenuItem transformShape;
+    private JMenuItem eraseButton;
     private JMenu strokeWidth;
     private JMenuItem fillColor;
     private JMenuItem strokeColor;
@@ -211,7 +212,16 @@ public class DrawVaView extends JFrame implements Observer {
 
         drawingMode = new JRadioButtonMenuItem("Drawing Mode", true);
         radiogroup.add(drawingMode);
-
+        
+        eraseButton = new JMenuItem("Erase");
+        radiogroup.add(eraseButton);
+        eraseButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	canvasController.erase();
+            
+           }
+        });
+        
         deleteShape = new JMenuItem("Delete Shape");
         deleteShape.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -258,6 +268,7 @@ public class DrawVaView extends JFrame implements Observer {
         edit.addSeparator();
         edit.add(deleteShape);
         edit.add(transformShape);
+        edit.add(eraseButton);
         return edit;
     }
 
