@@ -359,6 +359,10 @@ public class DrawVaController extends JComponent implements Observer {
             );
         }
     }
-
+   
+public void erase() {
+		model.setStrokeColor(Color.WHITE);
+		
+	}
 
 }     
