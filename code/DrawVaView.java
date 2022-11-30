@@ -23,7 +23,7 @@ public class DrawVaView extends JFrame implements Observer {
     private JRadioButtonMenuItem drawingMode;
     private JMenuItem deleteShape;
     private JMenuItem transformShape;
-    private JMenuItem eraseButton;
+    private JMenuItem eraseItem;
     private JMenu strokeWidth;
     private JMenuItem fillColor;
     private JMenuItem strokeColor;
@@ -34,6 +34,7 @@ public class DrawVaView extends JFrame implements Observer {
     private JComboBox strokes;
     private JButton fillColorButton;
     private JButton strokeColorButton;
+    private JButton eraseButton;
     
     private DrawVaController canvasController;
 
@@ -213,9 +214,9 @@ public class DrawVaView extends JFrame implements Observer {
         drawingMode = new JRadioButtonMenuItem("Drawing Mode", true);
         radiogroup.add(drawingMode);
         
-        eraseButton = new JMenuItem("Erase");
-        radiogroup.add(eraseButton);
-        eraseButton.addActionListener(new ActionListener(){
+        eraseItem = new JMenuItem("Erase");
+        radiogroup.add(eraseItem);
+        eraseItem.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
             	canvasController.erase();
             
@@ -268,7 +269,7 @@ public class DrawVaView extends JFrame implements Observer {
         edit.addSeparator();
         edit.add(deleteShape);
         edit.add(transformShape);
-        edit.add(eraseButton);
+        edit.add(eraseItem);
         return edit;
     }
 
@@ -353,6 +354,14 @@ public class DrawVaView extends JFrame implements Observer {
         selectButton = new JButton("Select", cursor);
         drawButton = new JButton("Draw", paintBrush);
         drawButton.setSelected(true);
+        
+        eraseButton = new JButton("Erase");
+        eraseButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+            	canvasController.erase();
+            
+           }
+        });
 
         selectButton.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent e){
@@ -379,6 +388,7 @@ public class DrawVaView extends JFrame implements Observer {
 
         toolbar.add(selectButton);
         toolbar.add(drawButton);
+        toolbar.add(eraseButton);
         toolbar.add(drawingModes);
         toolbar.add(strokes);
         toolbar.add(fillColor);
