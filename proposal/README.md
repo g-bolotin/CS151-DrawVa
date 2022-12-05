@@ -38,7 +38,7 @@
 
     Draw: The user will be able to freely draw all over the generated canvas
     Draw shapes: Simple shapes will be already implemented to allow user to draw certain shapes
-    Fill: Allow user to fill in whitespace
+    Clear: Allow user to fill with whitespace
     Erase: Allows user to erase their drawings
     Choose Colors: Allows user to choose from a range of colors
     Choose line thickness: Allows user to choose the thickness of their lines
