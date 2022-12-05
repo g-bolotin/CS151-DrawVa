@@ -105,7 +105,7 @@ A drawing app can have many uses, from doodling, taking notes, drawing charts, b
 * Stroke Color
 ### Solution: 
 Create a drawing app using only Java, GUIs, MVC Pattern, Observer Pattern, Java Swing.
-### Steps to run Program using DrawVa.jar provided (Note: Images was not used in jar file. Eclipse IDE does not give option to, therefore Select and Draw buttons do not look right):
+### Steps to run Program using DrawVa.jar provided
 | Steps | Details |
 | ------- | ------- |
 | 1 | Download DrawVa.jar |
