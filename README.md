@@ -1,5 +1,5 @@
 # DrawVa
-### Team 2; Galit Bolotin, Bryan Dang, and Anubhav Sawhney
+### Team 2, Galit Bolotin, Bryan Dang, and Anubhav Sawhney
 
 | Team Member | Proposal Contribution |
 | ------- | ------- |
@@ -23,18 +23,45 @@
 #### We wanted to create a free and simple to use drawing app which works on all computers that can run Java using components from Object Oriented Design
 
 ### Existing Programs (References): 
-#### MS Paint. Softonic. (n.d.). Retrieved December 4, 2022, from https://ms-paint.en.softonic.com/ 
-#### Pinoy Tutorial tv. (2020). How To Use Ms Paint - Ms Paint | Tutorial. YouTube. Retrieved December 4, 2022, from https://www.youtube.com/watch?v=KxHFwvRzDBs. 
-#### Paint.NET. Softonic. (n.d.). Retrieved December 4, 2022, from https://paint-net.en.softonic.com/ 
-#### Brewster, R. (n.d.). Features. Paint.NET. Retrieved December 4, 2022, from https://www.getpaint.net/features.html 
-#### Gpaint - GNU Project - Free Software Foundation (FSF). (2007, September 1). Retrieved December 4, 2022, from https://www.gnu.org/software/gpaint/ 
-#### Koblas, D. (1994, April 20). XPaint. Retrieved December 4, 2022, from https://sf-xpaint.sourceforge.net/ 
+#### MS Paint
+##### Provides many simple tools including shapes and freeform. [1]
+##### Very straightforward. [1]
+##### Opens and saves files in BMP, GIF, JPG, PNG, and TIFF. [1]
+##### Wide range of colors to pick from. [1]
+##### Newer versions have more functionality, but many use the old version for familiarity. [1]
+##### Only available on Windows. [1]
+##### Provides some photo editing tools, such as selection and transform. [2]
+#### Paint.NET
+##### Lightweight. [3]
+##### Started as a student project. [3]
+##### Wide variety of drawing tools, such as shapes, selection tools, zoom, paint bucket, eraser, color picker, pencil, clone, recolor, etc. [3]
+##### Supports layers. [3]
+##### Only available on Windows. [3]
+##### Available in many languages. [4]
+##### Has special effects. [4]
+##### Has unlimited undo and redo. [4]
+#### GNU Paint
+##### Created for GNOME, the GNU operating system desktop. [5]
+#####  port of XPaint. [5]
+##### Polygon, ellipse, freehand, text, fill/shallow for polygons and closed freehand shapes. [5]
+##### Cut and paste. [5]
+##### Print support using gnome-print, but isn’t perfectly functional. [5]
+##### Modern, easy-to-use user interface with tool and color palettes. [5]
+##### Editing multiple images at the same time without running multiple instances of the image editor. [5]
+##### All image processing features present in xpaint. [5]
+#### XPaint
+##### Has most standard features like freehand, shapes, etc. [6]
+##### Compatible with PPM, XBM, TIFF, etc. [6]
+##### Allows for editing multiple images at once. [6]
+##### Some advanced features like gradient fill and image processing. [6]
+
 
 ### Assumptions / Operating Environments / Intended Usage
 #### Usage: A functioning java program that imitates a simple raster graphics editor.
 #### Operating Environments: Anything that can run Java.
 #### Intended Usage: A drawing app can have many uses, from doodling, taking notes, drawing charts, brainstorming, etc. The users are those who want to use a straightforward drawing app to visualize their ideas, no matter which PC or laptop they own.
 
+### Diagram
 | Diagram | Summary |
 | ------- | ------- |
 | [DrawVa_Class_Diagram.png](https://github.com/g-bolotin/CS151-DrawVa/blob/main/diagrams/DrawVa_Class_Diagram.png) | This is the class diagram for the project DrawVa. It includes the Model, View, Controller, Observer, and Driver class Canvas attributes and methods. |
@@ -92,7 +119,6 @@
 | 5 | Run DrawVaDriver.java |
 | 6 | Start drawing and get creative|
 
-
 ### Snapshots of the running program:
 ![Screenshot (206)](https://user-images.githubusercontent.com/91082267/205748317-2f486cf7-53b7-4a1b-9471-cb26352bb870.png)
 ![Screenshot (218)](https://user-images.githubusercontent.com/91082267/205748339-052e7eda-f180-4462-a58e-9f3100cb7d9c.png)
@@ -103,3 +129,11 @@
 ![Screenshot (223)](https://user-images.githubusercontent.com/91082267/205748947-711be23b-244b-49bd-8b80-e54b5aa0c9f4.png)
 ![Screenshot (224)](https://user-images.githubusercontent.com/91082267/205749200-4d9def8c-ecf4-4e1f-a0e5-cec147eb70f4.png)
 ![Screenshot (225)](https://user-images.githubusercontent.com/91082267/205749209-4066d3c3-d68e-4cb6-abd5-b870c2026646.png)
+
+### References
+#### MS Paint. Softonic. (n.d.). Retrieved December 4, 2022, from https://ms-paint.en.softonic.com/ 
+#### Pinoy Tutorial tv. (2020). How To Use Ms Paint - Ms Paint | Tutorial. YouTube. Retrieved December 4, 2022, from https://www.youtube.com/watch?v=KxHFwvRzDBs. 
+#### Paint.NET. Softonic. (n.d.). Retrieved December 4, 2022, from https://paint-net.en.softonic.com/ 
+#### Brewster, R. (n.d.). Features. Paint.NET. Retrieved December 4, 2022, from https://www.getpaint.net/features.html 
+#### Gpaint - GNU Project - Free Software Foundation (FSF). (2007, September 1). Retrieved December 4, 2022, from https://www.gnu.org/software/gpaint/ 
+#### Koblas, D. (1994, April 20). XPaint. Retrieved December 4, 2022, from https://sf-xpaint.sourceforge.net/ 
