@@ -364,5 +364,8 @@ public void erase() {
 		model.setStrokeColor(Color.WHITE);
 		
 	}
+public void undo() {
+		model.resetCanvasShapes();
+	}
 
 }     

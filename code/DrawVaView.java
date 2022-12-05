@@ -35,6 +35,7 @@ public class DrawVaView extends JFrame implements Observer {
     private JButton fillColorButton;
     private JButton strokeColorButton;
     private JButton eraseButton;
+    private JButton undoButton;
     
     private DrawVaController canvasController;
 
@@ -362,6 +363,14 @@ public class DrawVaView extends JFrame implements Observer {
             
            }
         });
+        
+        // Undo BUTTON
+        undoButton = new JButton("Undo");
+        undoButton.addActionListener(new ActionListener(){
+          public void actionPerformed(ActionEvent e){
+        	  canvasController.undo();
+            }
+        });
 
         selectButton.addActionListener(new ActionListener(){
              public void actionPerformed(ActionEvent e){
@@ -389,6 +398,7 @@ public class DrawVaView extends JFrame implements Observer {
         toolbar.add(selectButton);
         toolbar.add(drawButton);
         toolbar.add(eraseButton);
+        toolbar.add(undoButton);
         toolbar.add(drawingModes);
         toolbar.add(strokes);
         toolbar.add(fillColor);
