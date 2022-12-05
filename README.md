@@ -61,7 +61,7 @@
 #### Operating Environments: Anything that can run Java.
 #### Intended Usage: A drawing app can have many uses, from doodling, taking notes, drawing charts, brainstorming, etc. The users are those who want to use a straightforward drawing app to visualize their ideas, no matter which PC or laptop they own.
 
-### Diagram
+### Diagrams
 | Diagram | Summary |
 | ------- | ------- |
 | [DrawVa_Class_Diagram.png](https://github.com/g-bolotin/CS151-DrawVa/blob/main/diagrams/DrawVa_Class_Diagram.png) | This is the class diagram for the project DrawVa. It includes the Model, View, Controller, Observer, and Driver class Canvas attributes and methods. |
