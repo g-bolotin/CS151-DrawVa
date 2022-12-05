@@ -94,3 +94,12 @@
 
 
 ### Snapshots of the running program:
+![Screenshot (206)](https://user-images.githubusercontent.com/91082267/205748317-2f486cf7-53b7-4a1b-9471-cb26352bb870.png)
+![Screenshot (218)](https://user-images.githubusercontent.com/91082267/205748339-052e7eda-f180-4462-a58e-9f3100cb7d9c.png)
+![Screenshot (219)](https://user-images.githubusercontent.com/91082267/205748354-b8b6d997-e3d7-4a45-a8cd-130f23655f1f.png)
+![Screenshot (220)](https://user-images.githubusercontent.com/91082267/205748911-5ca94925-218a-412d-bcff-31688ca8792b.png)
+![Screenshot (221)](https://user-images.githubusercontent.com/91082267/205748924-6e49a18d-90a5-4eac-863e-8ceb278245ff.png)
+![Screenshot (222)](https://user-images.githubusercontent.com/91082267/205748936-ac34e4e5-c710-4eca-8872-1198e6d8bf60.png)
+![Screenshot (223)](https://user-images.githubusercontent.com/91082267/205748947-711be23b-244b-49bd-8b80-e54b5aa0c9f4.png)
+![Screenshot (224)](https://user-images.githubusercontent.com/91082267/205749200-4d9def8c-ecf4-4e1f-a0e5-cec147eb70f4.png)
+![Screenshot (225)](https://user-images.githubusercontent.com/91082267/205749209-4066d3c3-d68e-4cb6-abd5-b870c2026646.png)
